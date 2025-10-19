@@ -13,7 +13,7 @@ def main():
 
         # 使用转换后的数据更新仓库XML
         print("\n开始更新仓库XML文件...")
-        update_repo(input_file=apps_file)
+        update_repo(input_file=apps_file, output_file="repo.xml")
 
 
 if __name__ == "__main__":

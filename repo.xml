@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugins>
+  <cachechk>202510191527</cachechk>
+  <item>
+    <name>iPerf3</name>
+    <changeLog></changeLog>
+    <category>QnapclubCN Repo</category>
+    <type>其他</type>
+    <icon80>https://help.qnapclub.cn/upload/logo_80x80.png</icon80>
+    <icon100>https://help.qnapclub.cn/upload/logo_100x100.png</icon100>
+    <description>QnapclubCN</description>
+    <fwVersion>4.2.6</fwVersion>
+    <version>3.19.1</version>
+    <platform>
+      <platformID>TS-NASX86</platformID>
+      <location>https://www.myqnap.org/repo/iPerf3_3.19.1_x86_64.qpkg</location>
+      <signature></signature>
+    </platform>
+    <platform>
+      <platformID>TS-NASARM_64</platformID>
+      <location>https://www.myqnap.org/repo/iPerf3_3.19.1_arm_64.qpkg</location>
+      <signature></signature>
+    </platform>
+    <internalName>iPerf3</internalName>
+    <publishedDate>2025-10-19 14:21</publishedDate>
+    <maintainer>QoolBox</maintainer>
+    <developer>QoolBox</developer>
+    <forumLink></forumLink>
+    <language>English</language>
+    <snapshot></snapshot>
+    <bannerImg></bannerImg>
+    <tutorialLink></tutorialLink>
+  </item>
+</plugins>

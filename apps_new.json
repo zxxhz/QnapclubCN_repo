@@ -1,0 +1,30 @@
+[
+  {
+    "name": "iPerf3",
+    "category": "QnapclubCN Repo",
+    "type": "其他",
+    "icon80": "https://help.qnapclub.cn/upload/logo_80x80.png",
+    "icon100": "https://help.qnapclub.cn/upload/logo_100x100.png",
+    "description": "QnapclubCN",
+    "fwVersion": "4.2.6",
+    "version": "3.19.1",
+    "platform": [
+      {
+        "platformID": "TS-NASX86",
+        "location": "https://www.myqnap.org/repo/iPerf3_3.19.1_x86_64.qpkg",
+        "signature": ""
+      },
+      {
+        "platformID": "TS-NASARM_64",
+        "location": "https://www.myqnap.org/repo/iPerf3_3.19.1_arm_64.qpkg",
+        "signature": ""
+      }
+    ],
+    "location": "{\"TS-NASX86\":\"",
+    "internalName": "iPerf3",
+    "publishedDate": "2025-10-19 14:21",
+    "maintainer": "QoolBox",
+    "developer": "QoolBox",
+    "language": "English"
+  }
+]
