@@ -121,7 +121,7 @@ def fetch_and_convert_data(config):
         .app_token(config.app_token)
         .table_id(config.table_id)
         .user_id_type("open_id")
-        .page_size(20)
+        .page_size(500) # 懒得写分页 单页最大500条记录
         .request_body(
             SearchAppTableRecordRequestBody.builder()
             .view_id("vewAbrcCsi")
