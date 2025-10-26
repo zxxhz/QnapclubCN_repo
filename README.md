@@ -13,7 +13,8 @@ QnapclubCN_repo/
 ├── .gitignore            # Git忽略文件
 ├── LICENSE               # 许可证文件
 ├── README.md             # 项目说明文档
-├── config.py.example     # 配置文件模板
+├── config.py             # 配置文件
+├── config.json.example   # 配置文件模板
 ├── feishu_data_processor.py  # 飞书数据处理模块
 ├── main.py               # 主程序入口
 ├── update_repo.py        # 仓库XML生成模块
@@ -52,10 +53,31 @@ cp config.py.example config.py
 2. 编辑 `config.py` 文件，填入飞书API所需的信息：
 
 ```python
-# 飞书配置信息
-app_token = "你的应用Token"
-user_access_token = "你的用户访问Token"
-table_id = "你的表格ID"
+# 配置会自动加载并创建Config类的实例
+# 配置项说明：
+# - app_token: 飞书多维表格的应用Token（必填）
+# - table_id: 多维表格ID（必填）
+# - app_id & app_secret: 用于获取tenant_access_token（选填，与user_access_token二选一）
+# - user_access_token: 用户访问Token（选填，与app_id&app_secret二选一）
+```
+
+### 代码中使用配置
+
+在项目的Python文件中，推荐使用以下方式导入和使用配置：
+
+```python
+# 方式1：导入默认配置实例（推荐）
+from config import config_instance
+
+# 访问配置项
+app_token = config_instance.app_token
+table_id = config_instance.table_id
+
+# 方式2：创建新的配置实例
+from config import Config
+
+custom_config = Config()
+app_token = custom_config.app_token
 ```
 
 ### 运行程序

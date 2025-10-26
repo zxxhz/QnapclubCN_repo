@@ -78,10 +78,15 @@ def fetch_and_convert_data(config):
         list: 转换后的应用信息列表
     """
     # 如果配置中有app_id和app_secret，尝试获取tenant_access_token
+    token = None  # 确保token变量始终有定义
     if hasattr(config, "app_id") and hasattr(config, "app_secret"):
         tenant_token = get_tenant_access_token(config.app_id, config.app_secret)
         if tenant_token:
             token = tenant_token
+        else:
+            print("获取tenant_access_token失败")
+            exit(1)
+
 
     # 创建client
     client = (
