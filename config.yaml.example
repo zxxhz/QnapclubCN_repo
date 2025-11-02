@@ -1,0 +1,18 @@
+# 复制此文件并重命名为config.yaml，然后填入真实值
+data_source: "feishu"  # 可选值："feishu"或"mysql"
+
+# 飞书配置信息
+feishu:
+  app_token: "your_app_token_here"  # 必填：飞书多维表格的应用Token
+  table_id: "your_table_id_here"    # 必填：多维表格ID
+  view_id: "your_view_id_here"      # 必填：多维表格视图ID
+  app_id: "your_app_id_here"        # 选填：飞书应用ID
+  app_secret: "your_app_secret_here"  # 选填：飞书应用Secret
+
+# MySQL配置信息
+mysql:
+  host: "your_host_here"           # 必填：MySQL数据库主机地址
+  port: 3306                        # 选填：MySQL数据库端口号，默认3306
+  user: "your_user_here"           # 必填：MySQL数据库用户名
+  password: "your_password_here"   # 必填：MySQL数据库密码
+  database: "your_database_here"   # 必填：MySQL数据库名称

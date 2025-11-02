@@ -48,6 +48,9 @@ coverage.xml
 *.cover
 *.py.cover
 .hypothesis/
+
+# 配置文件
+config.yaml
 .pytest_cache/
 cover/
 
@@ -205,5 +208,3 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
-
-config.json

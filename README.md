@@ -14,7 +14,7 @@ QnapclubCN_repo/
 ├── LICENSE               # 许可证文件
 ├── README.md             # 项目说明文档
 ├── config.py             # 配置文件
-├── config.json.example   # 配置文件模板
+├── config.yaml.example   # 配置文件模板
 ├── feishu_data_processor.py  # 飞书数据处理模块
 ├── main.py               # 主程序入口
 ├── update_repo.py        # 仓库XML生成模块
@@ -39,7 +39,7 @@ QnapclubCN_repo/
 ### 安装依赖
 
 ```bash
-pip install lark-oapi lxml
+pip install lark-oapi lxml pyyaml
 ```
 
 ### 配置设置
@@ -47,18 +47,23 @@ pip install lark-oapi lxml
 1. 复制配置文件模板并填写必要信息：
 
 ```bash
-cp config.py.example config.py
+cp config.yaml.example config.yaml
 ```
 
-2. 编辑 `config.py` 文件，填入飞书API所需的信息：
+2. 编辑 `config.yaml` 文件，填入飞书API所需的信息（使用YAML格式）：
 
-```python
-# 配置会自动加载并创建Config类的实例
-# 配置项说明：
-# - app_token: 飞书多维表格的应用Token（必填）
-# - table_id: 多维表格ID（必填）
-# - app_id & app_secret: 用于获取tenant_access_token（选填，与user_access_token二选一）
-# - user_access_token: 用户访问Token（选填，与app_id&app_secret二选一）
+```yaml
+# 飞书配置信息
+app_token: "your_app_token_here"  # 必填：飞书多维表格的应用Token
+table_id: "your_table_id_here"    # 必填：多维表格ID
+
+# 认证方式选择（二选一）：
+# 方式1：使用app_id和app_secret获取tenant_access_token
+app_id: "your_app_id_here"        # 选填
+app_secret: "your_app_secret_here"  # 选填
+
+# 方式2：直接使用user_access_token
+user_access_token: "your_user_access_token_here"  # 选填
 ```
 
 ### 代码中使用配置
