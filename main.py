@@ -1,14 +1,15 @@
 import json
 
 from config import config_instance
-from data_sources import feishu
+from data_sources import FeishuDataSource
 from update_repo import update_repo
 
 
 def main():
     # 从飞书获取数据并转换
     if config_instance.data_source == "feishu":
-        apps_list: list[dict] = feishu.fetch_and_convert_data(config_instance)
+        feishu_ds = FeishuDataSource(config_instance)
+        apps_list: list[dict] = list(feishu_ds.fetch_data())
 
     if apps_list:
         # 保存转换后的数据到JSON文件

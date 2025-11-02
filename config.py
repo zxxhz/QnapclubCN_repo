@@ -1,3 +1,5 @@
+"""配置模块"""
+
 import yaml
 import os
 import sys
@@ -17,7 +19,9 @@ class Config:
         config = load_config()
         self.data_source: str = config.get("data_source", "")
         if not self.data_source:
-            print("未指定数据来源, 请在config.yaml中配置'data_source'.", file=sys.stderr)
+            print(
+                "未指定数据来源, 请在config.yaml中配置'data_source'.", file=sys.stderr
+            )
             sys.exit(1)
         if self.data_source == "feishu":
             self.app_token: str = config["feishu"].get("app_token", "")
@@ -26,7 +30,10 @@ class Config:
             self.app_id: str = config["feishu"].get("app_id", "")
             self.app_secret: str = config["feishu"].get("app_secret", "")
         else:
-            print(f"不支持的数据来源: {self.data_source} ,目前仅支持'feishu'.", file=sys.stderr)
+            print(
+                f"不支持的数据来源: {self.data_source} ,目前仅支持'feishu'.",
+                file=sys.stderr,
+            )
             sys.exit(1)
 
 

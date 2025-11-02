@@ -12,7 +12,7 @@ feishu:
 # MySQL配置信息
 mysql:
   host: "your_host_here"           # 必填：MySQL数据库主机地址
-  port: 3306                        # 选填：MySQL数据库端口号，默认3306
+  port: 3306                       # 选填：MySQL数据库端口号，默认3306
   user: "your_user_here"           # 必填：MySQL数据库用户名
   password: "your_password_here"   # 必填：MySQL数据库密码
   database: "your_database_here"   # 必填：MySQL数据库名称
