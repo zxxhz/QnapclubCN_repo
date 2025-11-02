@@ -54,14 +54,17 @@ def get_tenant_access_token(app_id, app_secret):
     # 处理业务结果
     try:
         # 尝试不同的响应结构获取token
-        if hasattr(response, 'data') and hasattr(response.data, 'tenant_access_token'):
+        if hasattr(response, "data") and hasattr(response.data, "tenant_access_token"):
             return response.data.tenant_access_token
-        elif hasattr(response, 'raw') and hasattr(response.raw, 'content'):
+        elif hasattr(response, "raw") and hasattr(response.raw, "content"):
             response_content = json.loads(response.raw.content)
-            if 'tenant_access_token' in response_content:
-                return response_content['tenant_access_token']
-            elif 'data' in response_content and 'tenant_access_token' in response_content['data']:
-                return response_content['data']['tenant_access_token']
+            if "tenant_access_token" in response_content:
+                return response_content["tenant_access_token"]
+            elif (
+                "data" in response_content
+                and "tenant_access_token" in response_content["data"]
+            ):
+                return response_content["data"]["tenant_access_token"]
     except Exception:
         pass
     return None
@@ -86,7 +89,6 @@ def fetch_and_convert_data(config):
         else:
             print("获取tenant_access_token失败")
             exit(1)
-
 
     # 创建client
     client = (
@@ -126,10 +128,10 @@ def fetch_and_convert_data(config):
         .app_token(config.app_token)
         .table_id(config.table_id)
         .user_id_type("open_id")
-        .page_size(500) # 懒得写分页 单页最大500条记录
+        .page_size(500)  # 懒得写分页 单页最大500条记录
         .request_body(
             SearchAppTableRecordRequestBody.builder()
-            .view_id("vewAbrcCsi")
+            .view_id(config.view_id)
             .field_names(field_order)  # 使用定义的字段顺序
             .build()
         )
@@ -151,7 +153,7 @@ def fetch_and_convert_data(config):
 
     # 处理业务结果
     items = response.data.items
-    apps_list = []
+    apps_list: list[dict] = []
 
     for item in items:
         # 使用OrderedDict来保持字段顺序
@@ -342,21 +344,3 @@ def fetch_and_convert_data(config):
         apps_list.insert(0, app_info)
 
     return apps_list
-
-
-def save_apps_to_json(apps_list, output_file="apps_new.json"):
-    """
-    保存应用信息列表到JSON文件
-
-    Args:
-        apps_list: 应用信息列表
-        output_file: 输出文件名
-
-    Returns:
-        str: 输出文件的路径
-    """
-    with open(output_file, "w", encoding="utf-8") as f:
-        json.dump(apps_list, f, ensure_ascii=False, indent=2)
-
-    print(f"成功转换{len(apps_list)}个应用信息到{output_file}")
-    return output_file
