@@ -1,7 +1,7 @@
 import json
 
 from config import config_instance
-from data_sources import FeishuDataSource
+from data_sources import FeishuDataSource, SQLiteDataSource
 from update_repo import update_repo
 
 
@@ -10,6 +10,10 @@ def main():
     if config_instance.data_source == "feishu":
         feishu_ds = FeishuDataSource(config_instance)
         apps_list: list[dict] = list(feishu_ds.fetch_data())
+    # 从SQLite数据库获取数据并转换
+    elif config_instance.data_source == "sqlite":
+        sqlite_ds = SQLiteDataSource(config_instance)
+        apps_list: list[dict] = list(sqlite_ds.fetch_data())
 
     if apps_list:
         # 保存转换后的数据到JSON文件

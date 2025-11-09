@@ -1,5 +1,5 @@
 # 复制此文件并重命名为config.yaml，然后填入真实值
-data_source: "feishu"  # 可选值："feishu"或"mysql"
+data_source: "feishu" # 可选值："feishu","sqlite","mysql"
 
 # 飞书配置信息
 feishu:
@@ -8,6 +8,10 @@ feishu:
   view_id: "your_view_id_here"      # 必填：多维表格视图ID
   app_id: "your_app_id_here"        # 选填：飞书应用ID
   app_secret: "your_app_secret_here"  # 选填：飞书应用Secret
+
+# SQLite配置信息
+sqlite:
+  db_path: "database.db" # 必填：SQLite数据库文件路径
 
 # MySQL配置信息
 mysql:

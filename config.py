@@ -23,15 +23,20 @@ class Config:
                 "未指定数据来源, 请在config.yaml中配置'data_source'.", file=sys.stderr
             )
             sys.exit(1)
-        if self.data_source == "feishu":
-            self.app_token: str = config["feishu"].get("app_token", "")
-            self.table_id: str = config["feishu"].get("table_id", "")
-            self.view_id: str = config["feishu"].get("view_id", "")
-            self.app_id: str = config["feishu"].get("app_id", "")
-            self.app_secret: str = config["feishu"].get("app_secret", "")
-        else:
+        datasource = ["feishu", "sqlite"]
+        # feishu
+        self.app_token: str = config["feishu"].get("app_token", "")
+        self.table_id: str = config["feishu"].get("table_id", "")
+        self.view_id: str = config["feishu"].get("view_id", "")
+        self.app_id: str = config["feishu"].get("app_id", "")
+        self.app_secret: str = config["feishu"].get("app_secret", "")
+
+        # sqlite
+        self.db_path: str = config["sqlite"].get("db_path", "")
+
+        if self.data_source not in datasource:
             print(
-                f"不支持的数据来源: {self.data_source} ,目前仅支持'feishu'.",
+                f"不支持的数据来源: {self.data_source} ,目前仅支持{datasource}.",
                 file=sys.stderr,
             )
             sys.exit(1)
