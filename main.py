@@ -1,7 +1,7 @@
 import json
 
 from config import config_instance
-from data_sources import FeishuDataSource, SQLiteDataSource
+from data_sources import FeishuDataSource, SQLiteDataSource, MySQLDataSource
 from update_repo import update_repo
 
 
@@ -14,6 +14,10 @@ def main():
     elif config_instance.data_source == "sqlite":
         sqlite_ds = SQLiteDataSource(config_instance)
         apps_list: list[dict] = list(sqlite_ds.fetch_data())
+    # 从MySQL数据库获取数据并转换
+    elif config_instance.data_source == "mysql":
+        mysql_ds = MySQLDataSource(config_instance)
+        apps_list: list[dict] = list(mysql_ds.fetch_data())
 
     if apps_list:
         # 保存转换后的数据到JSON文件

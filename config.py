@@ -23,7 +23,7 @@ class Config:
                 "未指定数据来源, 请在config.yaml中配置'data_source'.", file=sys.stderr
             )
             sys.exit(1)
-        datasource = ["feishu", "sqlite"]
+        datasource = ["feishu", "sqlite", "mysql"]
         # feishu
         self.app_token: str = config["feishu"].get("app_token", "")
         self.table_id: str = config["feishu"].get("table_id", "")
@@ -33,6 +33,14 @@ class Config:
 
         # sqlite
         self.db_path: str = config["sqlite"].get("db_path", "")
+        
+        # mysql
+        self.mysql_host: str = config["mysql"].get("host", "localhost")
+        self.mysql_port: int = config["mysql"].get("port", 3306)
+        self.mysql_user: str = config["mysql"].get("user", "")
+        self.mysql_password: str = config["mysql"].get("password", "")
+        self.mysql_database: str = config["mysql"].get("database", "")
+        self.mysql_charset: str = config["mysql"].get("charset", "utf8mb4")
 
         if self.data_source not in datasource:
             print(

@@ -3,10 +3,12 @@
 from .base import DataSource
 from .feishu import FeishuDataSource
 from .sqlite import SQLiteDataSource
+from .mysql import MySQLDataSource
 
 
 __all__ = [
     "DataSource",
     "FeishuDataSource",
     "SQLiteDataSource",
+    "MySQLDataSource",
 ]
